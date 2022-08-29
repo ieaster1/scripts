@@ -16,11 +16,17 @@ def create_random_mac(type='qemu'):
 
 def main():
     parser = argparse.ArgumentParser(description='Create random MAC with Locally Administered Organizational Unique Identifier.')
-    parser.add_argument('num', help='Number of MACs to create.', type=int)
+    parser.add_argument('-c', '--count', help='Number of MACs to create.', type=int, metavar='count')
 
     args = vars(parser.parse_args())
 
-    count = args['num']
+    # print(f"[debug]: Args {args}")
+    if args['count'] is None:
+        count = 1
+    else:
+        count = args['count']
+
+    # print(f"[debug]: create {count} macs")
     while count > 0:
         decimal_mac, mac = create_random_mac()
         print(mac)
