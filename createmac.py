@@ -3,7 +3,6 @@ import re
 import sys
 import random
 import argparse
-from venv import create
 
 def create_random_mac(type='qemu'):
     ouis = { 'xen': [ 0x00, 0x16, 0x3E ], 'qemu': [ 0x52, 0x54, 0x00 ] }
