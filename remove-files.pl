@@ -3,10 +3,16 @@
 use strict;
 use warnings;
 
+my $logFile = "remove-output.log";
 my @files = <*>;
 
-foreach my $file (@files) {
-    open STDOUT, '>>', "remove.log";
+for my $file (@files) {
+    open STDOUT, '>>', $logFile;
     print "removing $file\n";
-    unlink $file or die "Unable to unlink $file: $!";
-}
+    unlink $file or do {
+        open STDERR, '>>', $logFile;
+        warn("Unable to remove $file: $!");
+        close(STDERR);
+        next;
+    };
+};
