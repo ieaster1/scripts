@@ -1,9 +1,14 @@
 #!/usr/bin/perl
 
+# Super simple script to clear out files from a directory.
+# main use case is in instances where rm presents "arg list too long"
+# if a script is not necessary, several 1-liners can be used
+# Example: perl -e 'for(<*>){unlink}'
+
 use strict;
 use warnings;
 
-my $logFile = "remove-output.log";
+my $logFile = "removed.log";
 my @files = <*>;
 
 for my $file (@files) {
