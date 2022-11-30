@@ -7,17 +7,21 @@
 
 use strict;
 use warnings;
+use File::Basename;
 
-my $logFile = "removed.log";
+my $exec = basename($0);
+my $logFile = "deleted.log";
 my @files = <*>;
 
 for my $file (@files) {
-    open STDOUT, '>>', $logFile;
-    print "removing $file\n";
-    unlink $file or do {
-        open STDERR, '>>', $logFile;
-        warn("Unable to remove $file: $!");
-        close(STDERR);
-        next;
+    if ( $file ne $exec ) {
+        open STDOUT, '>>', $logFile;
+        print "deleting $file\n";
+        unlink $file or do {
+            open STDERR, '>>', $logFile;
+            warn("Unable to remove $file: $!");
+            close(STDERR);
+            next;
+        };
     };
 };
