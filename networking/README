@@ -1,0 +1,46 @@
+## Networking
+
+### igmp
+
+**One time useage**
+```bash
+wget https://raw.githubusercontent.com/ieaster1/scripts/networking/main/igmp -O igmp && chmod +x igmp
+```
+
+```bash
+./igmp
+```
+
+**example**
+```bash
+$ ./igmp
+
+Interface: lo
+  Address: 127.0.0.1/8
+  Multicast Group: 224.0.0.251
+  Multicast Group: 224.0.0.1
+  IGMP Groups:
+    Group: 2, Version: V3
+
+Interface: eth0
+  Address: 192.168.52.29/24
+  Multicast Group: 224.0.0.251
+  Multicast Group: 224.0.0.1
+  IGMP Groups:
+    Group: 2, Version: V2
+
+Interface: eth1
+  Address: 172.16.100.29/24
+  Multicast Group: 224.0.0.251
+  Multicast Group: 224.0.0.1
+  IGMP Groups:
+    Group: 2, Version: V2
+
+Interface: wlx40ed00139795
+  IGMP Groups:
+```
+
+**install**
+```bash
+wget https://raw.githubusercontent.com/ieaster1/scripts/networking/main/igmp -O /usr/local/bin/igmp && chmod +x /usr/local/bin/igmp
+```
